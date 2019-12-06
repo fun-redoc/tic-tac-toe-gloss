@@ -1,8 +1,10 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# Language DeriveGeneric #-}
 module Game where
 import Debug.Trace (trace)
 import Control.Lens hiding (Empty)
 import Data.Array
+import GHC.Generics
 
 data Cell  = Empty | OccupiedBy Player deriving (Eq, Show)
 instance Semigroup Cell where
@@ -10,11 +12,12 @@ instance Semigroup Cell where
     (<>) _ Empty = Empty
     (<>) (OccupiedBy p1) (OccupiedBy p2) = if p1 == p2 then (OccupiedBy p1) else Empty
 type Board = Array (Int, Int) Cell 
-data Player = PlayerX | PlayerO deriving (Eq, Show)
+data Player = PlayerX | PlayerO deriving (Eq, Show, Read, Generic)
 data Winner = Winner Player | Tie deriving (Eq, Show)
 data State = Running | GameOver Winner deriving (Eq, Show) 
 
 data Game = Game { _board::Board
+                 , _iam::Player
                  , _player::Player
                  , _state::State
                  } deriving (Eq, Show)
@@ -24,8 +27,9 @@ makeLenses ''Game
 n::Int
 n = 3
 
-initialGame = Game 
+initialGame iam = Game 
   { _board = array indexRange $ zip (range indexRange) (repeat (Empty)) 
+  , _iam = iam
   , _player = PlayerO
   , _state  = Running -- (GameOver $ Just PlayerO)
   }

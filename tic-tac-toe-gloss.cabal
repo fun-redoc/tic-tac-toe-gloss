@@ -26,4 +26,6 @@ executable tic-tac-toe-gloss
                        , mtl
                        , array
                        , lens
-                       , reactive-banana
+                       , websockets
+                       , network
+                       , cereal

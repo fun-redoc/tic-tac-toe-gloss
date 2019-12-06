@@ -49,7 +49,7 @@ mousePosToBoardCoord (x',y') = (max 1 $ min n $ x, max 1 $ min n $ y)
 
 transformGame (EventKey (MouseButton LeftButton) Up _ mousePos) game =
     case game^.state of
-        (GameOver _)  -> initialGame
+        (GameOver _)  -> initialGame $ game^.iam
         Running       -> checkOutcome
                          . nextTurn
                          . playerAction game
@@ -57,3 +57,17 @@ transformGame (EventKey (MouseButton LeftButton) Up _ mousePos) game =
                          $ mousePos
         
 transformGame _ game = game
+
+
+transformGameCS (EventKey (MouseButton LeftButton) Up _ mousePos) game =
+    if game^.player == game^.iam then game' else game
+    where
+        game' = case game^.state of
+                    (GameOver _)  -> initialGame $ game^.iam
+                    Running       -> checkOutcome
+                                     . nextTurn
+                                     . playerAction game
+                                     . mousePosToBoardCoord
+                                     $ mousePos
+        
+transformGameCS _ game = game
