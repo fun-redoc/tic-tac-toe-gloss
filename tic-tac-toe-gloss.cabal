@@ -19,7 +19,7 @@ executable tic-tac-toe-gloss
   default-language:    Haskell2010
   ghc-options:         -threaded
   other-modules:       Rendering
-                       , Logic
+                       , Communication
                        , Game
   build-depends:       base >= 4.7 && < 5
                        , gloss

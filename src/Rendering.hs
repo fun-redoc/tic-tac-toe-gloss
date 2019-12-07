@@ -3,6 +3,7 @@ module Rendering where
 import Debug.Trace (trace)
 import Control.Lens hiding (Empty)
 import Graphics.Gloss       
+import Graphics.Gloss.Interface.Pure.Game
 import Data.Array
 
 import Game
@@ -10,6 +11,21 @@ import Game
 screenWidth = 640::Int
 screenHeight = 400::Int
 
+handleInput (EventKey (MouseButton LeftButton) Up _ mousePos) game =
+    case game^.state of
+        (GameOver _)  -> initialGame $ game^.iam
+        Running       -> checkOutcome
+                         . nextTurn
+                         . playerAction game
+                         . mousePosToBoardCoord
+                         $ mousePos
+    where
+        mousePosToBoardCoord::(Float,Float)->(Int,Int)
+        mousePosToBoardCoord (x',y') = (max 1 $ min n $ x, max 1 $ min n $ y)
+         where x = 1 + (floor $ (fromIntegral n)*(x' + scaleWidth/2)/(scaleWidth))
+               y = n - (floor $ (fromIntegral n)*(y' + scaleHeight/2)/(scaleHeight))
+        
+handleInput _ game = game
 
 scaleWidth  = fromIntegral $ min screenWidth screenHeight
 scaleHeight = fromIntegral $ min screenWidth screenHeight
