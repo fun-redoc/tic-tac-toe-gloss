@@ -1,13 +1,13 @@
 name:                tic-tac-toe-gloss
 version:             0.1.0.0
 -- synopsis:
--- description:
+description:         tic tac toe with gloss for two players
 homepage:            https://github.com/githubuser/tic-tac-toe-gloss#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
+author:              Fun Redoc
 maintainer:          example@example.com
-copyright:           2019 Author name here
+copyright:           2019 Fun Redoc
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10

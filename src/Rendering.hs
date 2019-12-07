@@ -32,9 +32,9 @@ scaleHeight = fromIntegral $ min screenWidth screenHeight
 
 backgroundColor = makeColor 0 0 0 255
 
-playerColor PlayerX = makeColorI 255  50  50 255
-playerColor PlayerO = makeColorI  50 100 255 255
-gridColor = makeColorI 255 255 50 255
+playerColor PlayerX = makeColorI 255   0   0 255
+playerColor PlayerO = makeColorI   0   0 255 255
+gridColor = makeColorI 255 255  0 255
 tieColor     = greyN 0.5
 
 outcomeColor Tie = tieColor

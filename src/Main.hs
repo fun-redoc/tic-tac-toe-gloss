@@ -2,27 +2,18 @@
 module Main where
 
 import Rendering
---import Logic
 import Game
 import Communication
 
 import Debug.Trace (trace)
-import Control.Lens hiding (Empty)
-
-import Graphics.Gloss
-import Graphics.Gloss.Data.Color
 import Graphics.Gloss.Interface.IO.Game
 
 import Network.WebSockets hiding (Message)
 import Network.Socket (withSocketsDo)
-import Control.Concurrent.Chan
-import Control.Concurrent.MVar
 import Control.Concurrent
 import Control.Monad
 import System.Environment
 import System.Exit
-import GHC.Generics
-import Data.Serialize (Serialize, encodeLazy, decodeLazy)
 
 data AppMode = Standalone | Server Int | Client String Int deriving (Show, Read, Eq)
 

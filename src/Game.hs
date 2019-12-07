@@ -6,13 +6,6 @@ import Control.Lens hiding (Empty)
 import Data.Array
 import GHC.Generics
 
--- import Debug.Trace (trace)
--- 
--- import Game
--- import Rendering (screenWidth, screenHeight, scaleHeight, scaleWidth)
--- import Data.Array
--- import Data.Maybe
--- import Control.Lens hiding (Empty)
 
 data Cell  = Empty | OccupiedBy Player deriving (Eq, Show)
 instance Semigroup Cell where
