@@ -8,20 +8,20 @@ websocktes for communication
 
 ## Compile 
 
-stack build
+    stack build
 
 ## Run Standalone
 
-stack run -- standalone
+    stack run -- standalone
 
 ## Run Two Player over IP
 
-Player 1 (servermode): stack run -- server <port>
-Player 2 (clientmode): stack run -- client <ip> <port>
+Player 1 (servermode): `stack run -- server <port>`
+Player 2 (clientmode): `stack run -- client <ip> <port>`
 
 ## Help
 
-stack run
+    stack run
 
 shows arguments help
 
