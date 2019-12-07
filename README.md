@@ -2,8 +2,8 @@
 
 simple tic tac toe game for two remote players written in haskell
 
-used gloss for rendering
-websocktes for communication
++ gloss for rendering
++ websocktes for communication
 
 
 ## Compile 
@@ -17,6 +17,7 @@ websocktes for communication
 ## Run Two Player over IP
 
 Player 1 (servermode): `stack run -- server <port>`
+
 Player 2 (clientmode): `stack run -- client <ip> <port>`
 
 ## Help
@@ -27,5 +28,5 @@ shows arguments help
 
 ## Compile Run Loop
 
-stack build --file-watch --exec "bash -c \"pkill tic-tac-toe-gloss; stack run &\""
+`stack build --file-watch --exec "bash -c \"pkill tic-tac-toe-gloss; stack run &\""`
 
